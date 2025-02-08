@@ -65,8 +65,8 @@ if (-not (Test-Path $PROFILE)) {
 # Conteúdo a ser adicionado ao final do perfil
 $profileContent = @"
 # Configurações adicionadas pelo setup.ps1
-Import-Module posh-git
-Import-Module oh-my-posh
+& ([ScriptBlock]::Create((oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" --print) -join "`n"))
+oh-my-posh init pwsh | Invoke-Expression
 
 # Define o tema do prompt (substitua 'montys' pelo tema de sua preferência)
 Set-PoshPrompt -Theme montys
